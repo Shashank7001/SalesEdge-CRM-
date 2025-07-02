@@ -8,6 +8,5 @@ urlpatterns = [
     path('op-leader/', OPLeaderView.as_view(), name='op-leader-view'),
     path('se/',SalesExecutiveView.as_view(), name='sales-executive-view'),
     path('am/', AccountsManagerView.as_view(), name='account-manager-view'),
-    path('admin/',AdminView.as_view(), name='admin-view'),
-    
+    path('admin/',AdminView.as_view(), name='admin-view'),  
     ]

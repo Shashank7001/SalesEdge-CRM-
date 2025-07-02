@@ -52,7 +52,7 @@ class Lead(models.Model):
     operations_status = models.CharField(max_length=20, choices=OP_STATUS_CHOICES, default="pending")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="wanted")
     source = models.CharField(max_length=255, blank=True, null=True)
-    account_image = models.ImageField(upload_to='transactions/')
+    account_image = models.ImageField(upload_to='transactions/',null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     assigned_to = models.ForeignKey(

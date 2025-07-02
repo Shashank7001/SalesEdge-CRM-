@@ -213,3 +213,24 @@ class AdminView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
+    def post(self, request):
+        try:
+            excel_file = request.FILES.get('excelfile')
+            if not excel_file:
+                return Response({'error': 'No file uploaded'}, status=status.HTTP_400_BAD_REQUEST)
+            df = pd.read_excel(excel_file)
+            for index, row in df.iterrows():
+                cd = {
+                'name' : row['Name'],
+                'email' : row['Email'],
+                'phone' : row['Phone'],
+                'source' : row['Source']
+                }
+                serializer = LeadSerializer(data=cd)
+                if not serializer.is_valid():
+                        return Response(serializer.errors, status=400)
+                serializer.save()
+            return Response({"message": "Leads registered successfully"}, status=201)
+                
+        except Exception as e:
+            return Response({"error": str(e)}, status=500)
