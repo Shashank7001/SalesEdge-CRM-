@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Account',
+    'Admin_app',
+    'OP_app',
+    'Acc_app',
+    'SalesEx',
+    
 ]
 
 MIDDLEWARE = [
@@ -136,3 +141,10 @@ REST_FRAMEWORK = {
 # #media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+}
